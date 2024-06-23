@@ -6,7 +6,7 @@ tags : [crypto, writeup]
 ---
 
 
-# This serie is about the [Cryptopals](https://cryptopals.com/) Challenges to learn Crypto
+This serie is about the [Cryptopals](https://cryptopals.com/) Challenges to learn Crypto
 
 Get ready to code, this is the begining of a long and wonderful journey!
 
