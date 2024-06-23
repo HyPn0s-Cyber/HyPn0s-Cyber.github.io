@@ -16,6 +16,9 @@ If you are like me and want to improve your crypto skills for CTFs, this is the 
 
 # Set 1 
 
+### **As I wish to improve for CTFs, I'm going to resolve the challenges in Python since it's the common language.**
+You can do them in any language that you like :)
+
 ## Challenge 1 Hex to Base64
 
 
@@ -49,3 +52,47 @@ print(result)
 ```
 
 It's this simple! 
+
+
+Let's continue with the second challenge 
+
+## Challenge 2 Fixed XOR
+
+This time, we have to implement a function which takes in input a hex string, decode it, and then XOR it against another string. 
+
+For example : 
+
+
+If your function works properly, then when you feed it the string:
+
+`1c0111001f010100061a024b53535009181c`
+
+after hex decoding, and when XOR'd against:
+
+`686974207468652062756c6c277320657965`
+
+should produce:
+
+`746865206b696420646f6e277420706c6179`
+
+Let's do this! 
+
+***Note that the two strings are of equal length***
+
+```python
+# Function to decode hex to bytes
+def HEXDecode(input):
+    return bytes.fromhex(input)
+
+# Function to XOR to equal length sequences and return the hex value
+def XOR(input1, input2):
+    result = bytes(a ^ b for a, b in zip(input1, input2))
+    return result.hex()
+
+# Inputs
+input1 = HEXDecode('1c0111001f010100061a024b53535009181c')
+input2 = HEXDecode('686974207468652062756c6c277320657965')
+
+print(XOR(input1,input2))  # Prints the results
+#Output = 746865206b696420646f6e277420706c6179
+```
