@@ -96,3 +96,20 @@ input2 = HEXDecode('686974207468652062756c6c277320657965')
 print(XOR(input1,input2))  # Prints the results
 #Output = 746865206b696420646f6e277420706c6179
 ```
+_The trick here, is to not decode the byte sequence in the HEXDecode() function,keep it as bytes for the XOR to work. I made that mistake too_
+
+## Challenge 3 Single-byte XOR cipher
+
+This is starting to get interesting. Our new challenge is to find the key of a XOR'd string input. 
+More precisely the hex encoded string:
+
+`1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736`
+
+has been XOR'd against _a single character_. Find the key, decrypt the message.
+
+__Hint:__
+How? Devise some method for "scoring" a piece of English plaintext. Character frequency is a good metric. Evaluate each output and choose the one with the best score.
+
+
+
+I started with absolutly no idea on how to implement this, but I already knew the character frequency technique. 
