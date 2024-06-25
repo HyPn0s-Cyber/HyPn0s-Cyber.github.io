@@ -235,3 +235,92 @@ _Most of it has been excluded for simplicity_
 
 Did you find the uncoded sentence? I did after reading all of it. No spoil if you didn't, let's complete the code to find the key and the sentence automatically. 
 
+I must admit, I looked for help on this one :/
+
+It's been a while since I used python and I was stuck on how to use the character frequency. 
+
+
+So here is our final code, please note that there is not a single answer, you can do diferently (and probably better than me)
+
+
+
+```python
+#Chall 3 Single-byte XOR cipher
+
+def XOR(input1, key):
+    # La clé doit être appliquée à chaque byte de input1
+    return bytes([b ^ key for b in input1])
+
+
+def HEXDecode(input):
+    return bytes.fromhex(input)
+
+def find_single_byte_xor_key(hex_input):
+    input_bytes = HEXDecode(hex_input)
+    best_score = 0
+    best_key = None
+    decrypted_message = None
+
+    for key_candidate in range(256):
+        xor_result = XOR(input_bytes, key_candidate)
+        current_score = score_text(xor_result)
+        if current_score > best_score:
+            best_score = current_score
+            best_key = key_candidate
+            decrypted_message = xor_result
+
+    return best_key, decrypted_message
+
+def score_text(text):
+    frequency = {
+        'a': 0.0651738, 'b': 0.0124248, 'c': 0.0217339, 'd': 0.0349835, 'e': 0.1041442, 'f': 0.0197881,
+        'g': 0.0158610, 'h': 0.0492888, 'i': 0.0558094, 'j': 0.0009033, 'k': 0.0050529, 'l': 0.0331490,
+        'm': 0.0202124, 'n': 0.0564513, 'o': 0.0596302, 'p': 0.0137645, 'q': 0.0008606, 'r': 0.0497563,
+        's': 0.0515760, 't': 0.0729357, 'u': 0.0225134, 'v': 0.0082903, 'w': 0.0171272, 'x': 0.0013692,
+        'y': 0.0145984, 'z': 0.0007836, ' ': 0.1918182
+    }
+    return sum([frequency.get(chr(byte), 0) for byte in text.lower()])
+
+# Exemple d'utilisation
+hex_input = '1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736'
+key, message = find_single_byte_xor_key(hex_input)
+print(f"Key: {key}")
+print(f"Key in ASCII: {chr(int(key))}")
+print(f"Decrypted message: {message.decode('utf-8', errors='replace')}")
+#Output : 
+#Key: 88
+#Key in ASCII: X
+#Decrypted message: Cooking MC's like a pound of bacon
+```
+
+### Here is a better explanation for the frequency part 
+
+Example
+Let's use a concrete example to illustrate:
+
+Suppose text = b'Hello' and frequency is a dictionary of approximate English letter frequencies:
+
+```python
+frequency = {
+    'a': 0.0651738, 'b': 0.0124248, 'c': 0.0217339, 'd': 0.0349835, 'e': 0.1041442,
+    'f': 0.0197881, 'g': 0.0158610, 'h': 0.0492888, 'i': 0.0558094, 'j': 0.0009033,
+    'k': 0.0050529, 'l': 0.0331490, 'm': 0.0202124, 'n': 0.0564513, 'o': 0.0596302,
+    'p': 0.0137645, 'q': 0.0008606, 'r': 0.0497563, 's': 0.0515760, 't': 0.0729357,
+    'u': 0.0225134, 'v': 0.0082903, 'w': 0.0171272, 'x': 0.0013692, 'y': 0.0145984,
+    'z': 0.0007836, ' ': 0.1918182
+}
+```
+The text is b'Hello'. Converted to lowercase, it becomes b'hello'.
+
+h -> 0.0492888
+e -> 0.1041442
+l -> 0.0331490
+l -> 0.0331490
+o -> 0.0596302
+
+The list of frequencies is [0.0492888, 0.1041442, 0.0331490, 0.0331490, 0.0596302].
+
+The sum of these frequencies is 0.0492888 + 0.1041442 + 0.0331490 + 0.0331490 + 0.0596302 = 0.2783602.
+
+Therefore, this line of code returns 0.2783602, which is the score of the text based on character frequency analysis.
+Our code does this for each XOR and keeps the key with the best score. 
