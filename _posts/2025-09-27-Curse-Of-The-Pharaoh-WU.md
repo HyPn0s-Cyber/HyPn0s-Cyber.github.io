@@ -43,7 +43,7 @@ Anyway, this enables us to bribe the guard and enter the pyramid where the flag 
 
 
 <p style="text-align: left;">
-  <img src="{{ '/assets/img/CP-flag.png' | relative_url }}" alt="Picture of the flag written inside the pyramid">
+  <img src="{{ '/assets/img/flag_Curse_Pharaoh3.png' | relative_url }}" alt="Picture of the flag written inside the pyramid">
 </p>
 
 
