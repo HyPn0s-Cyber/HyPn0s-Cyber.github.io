@@ -21,7 +21,7 @@ Note: I don't have records of all of them :/
 <div class="ctf-badge-container">
   <blockquote class="badgr-badge">
     <a href="https://badgr.com/public/assertions/ExU1krthTvqNXj5I6HaFaQ">
-      <img width="120px" height="120px" src="https://api.badgr.io/public/assertions/ExU1krthTvqNXj5I6HaFaQ/image">
+      <img width="120px" height="120px" src="https://api.badgr.io/public/assertions/ExU1krthTvqNXj5I6HaFaQ/image" alt="">
     </a>
     <p class="badgr-badge-name">DEADFACE CTF 2025 Competitor</p>
     <p class="badgr-badge-date"><strong>Awarded: </strong>10/28/2025</p>
