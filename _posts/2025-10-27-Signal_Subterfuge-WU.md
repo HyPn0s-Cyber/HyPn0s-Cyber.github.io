@@ -11,7 +11,7 @@ tags : [DeadFace 2025, osint]
 
 
 
-This challenge was a fantastic hybrid task, blending real-world Open-Source Intelligence (OSINT) with a Signal Intelligence (SIGINT) component. The goal was to identify a compromised cell tower from a single photograph and report its specific metadata.
+This challenge was a fantastic hybrid task. The goal was to identify a compromised cell tower from a single photograph and report its specific metadata.
 
 
 <p style="text-align: left;">
