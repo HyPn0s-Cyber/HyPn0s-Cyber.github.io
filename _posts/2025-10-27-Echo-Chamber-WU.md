@@ -11,7 +11,7 @@ tags : [DeadFace 2025, pwn]
 ## Echo Chamber
 
 <p style="text-align: left;">
-  <img src="{{ '/assets/img/echo_chamber.png' | relative_url }}">
+  <img src="{{ '/assets/img/echo_chamber.png' | relative_url }}" alt="Picture of the rules of the chall">
 </p>
 
 This challenge involved a pwn task on a remote service. The description "echoes messages without sanitizing input" strongly suggested a format string vulnerability.
